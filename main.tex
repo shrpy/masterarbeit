@@ -1,0 +1,159 @@
+%===============================================================================================%
+% BASIC SETUP
+%===============================================================================================%
+\documentclass[11pt,headlines=2,numbers=noenddot]{scrreprt}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{palatino}               %Use Palatino for text
+\usepackage{mathpazo}               %Use Palatino for math
+\usepackage[ngerman]{babel}
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage[headsepline,footsepline]{scrpage2}
+\usepackage{blindtext}
+\usepackage{textcomp}
+%===============================================================================================%
+% LAYOUT
+%===============================================================================================%
+\usepackage[left=25mm,right=20mm,top=25mm,bottom=20mm,headsep=10mm,footskip=8mm]{geometry}
+\setlength{\parindent}{0cm}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{0mm}}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+\usepackage{layouts}
+\usepackage{parskip}
+%===============================================================================================%
+% MATH
+%===============================================================================================%
+\usepackage{amsmath,amssymb}
+\usepackage[locale = US]{siunitx}
+\newcommand{\bvec}[1]{\boldsymbol{#1}}  %Vectors as bold symbols, without arrow
+%===============================================================================================%
+% GRAPHICS
+%===============================================================================================%
+\usepackage{float}
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+\usepackage[labelfont=bf,figurename={Abbildung},center]{caption} %,margin=0.2cm,skip=10pt
+\usepackage[labelformat=simple,labelsep=colon]{subcaption}  %Caption for subfigure environment
+\usepackage[ngerman,noabbrev]{cleveref}
+\newcommand{\bref}[1]{(\ref{#1})}
+%===============================================================================================%
+% BIBLIOGRAPHY
+%===============================================================================================%
+\usepackage[backend=biber,style=authoryear,dashed=false,doi=false,isbn=false,url=false]{biblatex}
+\addbibresource{library.bib}
+\setlength\bibitemsep{1.5\itemsep} %Linespread between bibliography entries
+\DefineBibliographyStrings{ngerman}{andothers = {{et\,al\adddot}}}
+\makeindex
+%===============================================================================================%
+% TABLES
+%===============================================================================================%
+\usepackage{array,tabularx,booktabs}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
+\newcommand*{\HL}[1]{\multicolumn{1}{l}{#1}}
+\newcommand*{\HC}[1]{\multicolumn{1}{c}{#1}}
+\newcommand*{\HR}[1]{\multicolumn{1}{r}{#1}}
+\def\cw{1.25cm} % column width for S1-S6
+%===============================================================================================%
+% TikZ
+%===============================================================================================%
+\usepackage{tikz,tikz-3dplot}
+\usetikzlibrary{arrows,calc,arrows.spaced}
+%===============================================================================================%
+%===============================================================================================%
+% DOCUMENT
+%===============================================================================================%
+\begin{document}
+%-----------------------------------------------------------------------------------------------%
+% Titlepage
+%-----------------------------------------------------------------------------------------------%
+\input{chapters/titlepage}
+\pagestyle{plain}
+%-----------------------------------------------------------------------------------------------%
+% Abstract and Declaration
+%-----------------------------------------------------------------------------------------------%
+%\chapter*{Kurzfassung}
+%\pagenumbering{Roman}
+%\input{chapters/abstract}
+%\input{chapters/declaration}
+%-----------------------------------------------------------------------------------------------%
+% List of Symbols
+%-----------------------------------------------------------------------------------------------%
+%\newpage
+%\input{chapters/abbreviations}
+%\thispagestyle{scrheadings}
+
+%-----------------------------------------------------------------------------------------------%
+% Table of Contents
+%-----------------------------------------------------------------------------------------------%
+\automark[chapter]{chapter}
+\newpage
+\tableofcontents
+\thispagestyle{scrheadings}
+%-----------------------------------------------------------------------------------------------%
+% Implementation of Contents
+%-----------------------------------------------------------------------------------------------%
+\newpage
+\pagenumbering{arabic}
+\pagestyle{scrheadings}
+%-----------------------------------------------------------------------------------------------%
+\chapter{Einleitung}
+\input{chapters/introduction}
+%-----------------------------------------------------------------------------------------------%
+%\chapter{Dummy}
+%\input{chapters/dummy.tex}
+%-----------------------------------------------------------------------------------------------%
+\chapter{Grundlagen}
+\input{chapters/basics.tex}
+%-----------------------------------------------------------------------------------------------%
+\chapter{Methodik}
+%\input{chapters/method}
+%-----------------------------------------------------------------------------------------------%
+\chapter{Ergebnisse}
+%\input{chapters/results.tex}
+%-----------------------------------------------------------------------------------------------%
+\chapter{Diskussion}
+%\input{chapters/discussion}
+%-----------------------------------------------------------------------------------------------%
+% Appendix
+%-----------------------------------------------------------------------------------------------%
+%\newpage
+%\appendix
+%-----------------------------------------------------------------------------------------------%
+%\chapter{Appendix 1}
+%\input{appendix/anhang1}
+%\thispagestyle{scrheadings}
+%-----------------------------------------------------------------------------------------------%
+% List of Figures
+%-----------------------------------------------------------------------------------------------%
+\newpage
+\pagestyle{scrheadings}
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}   
+\makeatletter
+     \renewcommand*\l@figure{\@dottedtocline{1}{1em}{3.2em}}
+\makeatother   
+\listoffigures
+\thispagestyle{scrheadings}
+%-----------------------------------------------------------------------------------------------%
+%  List of Tables
+%-----------------------------------------------------------------------------------------------%
+\newpage
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis} 
+\makeatletter
+     \renewcommand*\l@table{\@dottedtocline{1}{1em}{3.2em}}
+\makeatother             
+\listoftables
+\thispagestyle{scrheadings}
+%-----------------------------------------------------------------------------------------------%
+%  Bibliography
+%-----------------------------------------------------------------------------------------------%
+\newpage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}  
+\renewcommand*\chapterpagestyle{scrheadings}            
+\printbibliography
+\thispagestyle{scrheadings}
+
+\end{document}

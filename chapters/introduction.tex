@@ -1,0 +1,344 @@
+\section{Hintergrund}
+
+In vielen technischen Anwendungen bedarf es mechanischer Vorrichtungen zur Ausrichtung von Objekten bezüglich einer fixen Referenz, vielfach in mehreren Freiheitsgraden. Die räumliche Bewegung eines Starrkörpers kann in maximal sechs Freiheitsgraden erfolgen. Der Körper lässt sich entlang dreier orthogonaler Achsen verschieben sowie um jene drei Achsen drehen. Entsprechend lässt sich die Pose dieses Körpers, also dessen Position und Orientierung, durch einen Satz von sechs unabhängigen Parametern beschreiben. Für gewöhnlich setzen sich diese aus den drei Elementen seines Ortsvektors und den drei Raumwinkeln zusammen. Mechanische Systeme 
+
+Viele technische Anwendungen erfordern die Ausrichtung von Objekten zu einer fixen Referenz, vielfach in mehreren Freiheitsgraden. Ein Starrkörper kann in maximal sechs Freiheitsgraden bewegt werden, drei durch Translation entlang orthogonaler Achsen und drei durch Rotation um eben diese Achsen (Abbildung \ref{fig:intro_freiheitsgrade}. Entsprechend kann die Pose eines Starrkörpers, also dessen Position und Orientierung, durch einen Satz von sechs unabhängigen Parametern beschrieben werden. Üblicherweiße setzen sich diese aus Ortsvektor und Winkellage zusammen. Erfolgt die Bewegung in mehreren Freiheitsgraden durch ein mechanisches System, kann von einem Robotersystem gesprochen werden. Der von dieser Kinematik bewegte Starrkörper wird in der Robotertechnik üblicherweiße als End-Effektor bezeichnet.\footcite[Vgl.][1]{Merlet2006}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{graphics/intro/intro_freiheitsgrade}
+    \caption[Freiheitsgrade diverser Starrkörper]{Freiheitsgrade diverser Starrkörper, \\Quelle: Eigene Abbildung (nach Keferstein Fertigungsmesstechnik)}
+    \label{fig:intro_freiheitsgrade}
+\end{figure}
+
+Die Qualität eines Robotersystems wird insbesondere daran gemessenen, wie gut eine gewünschte Pose abgebildet werden kann, das heißt wie sehr die sechs Parameter der Ist-Pose mit jenen der Soll-Pose übereinstimmen. Wichtige Kenngrößen für die Bewertung dieser Fähigkeit sind Genauigkeit, Präzision und Auflösung. Abbildung \ref{fig:intro_genauigkeit} stellt den Zusammenhang dieser Größen am bekannten Zielscheibenmodell dar.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/intro/intro_genauigkeit}
+    \caption[Folie]{Genauigkeit gegenüber Präzision und Auflösung, Quelle: Eigene Abbildung (nach Testo Messunsicherheitsfibel)}
+    \label{fig:intro_genauigkeit}
+\end{figure}
+
+Die Auflösung, dargestellt als Abstand zwischen den konzentrischen Kreisen der Zielscheibe, entspricht dem kleinsten vom Regler des Robotersystems erfassbaren Bewegungsinkrements, also dessen kleinster Schrittweite. Enstsprechend werden hohe Auflösungen wiederum durch Verwendung  hochauflösender Stell- und Messglieder erreicht. Unter Präzision (auch Wiederholgenauigkeit) wird die Güte der Reproduzierbarkeit bei wiederholtem Einnehmen derselben Pose verstanden. Sie ist ein Maß für die Streuung der Einzelpose und damit eine statistische Abweichung. Die Präzision eines Robotersystems wird hauptsächlich durch dessen Auflösung bestimmt. Die Genauigkeit (auch Absolutgenauigkeit) eines Robotersystems beschreibt den Grad an Übereinstimmung zwischen tatsächlicher Pose und richtiger Pose des End-Effektors. Ein Robotersystem ist genau wenn es sowohl eine hohe Präzision als auch eine hohe Richtigkeit hat. Entsprechend ist hohe Präzision notwendig aber noch nicht hinreichend für hohe Genauigkeit. Ein Mangel an Richtigkeit, sofern bekannt und von systematischer Natur kann durch Kalibrierung verringert werden. (siehe Abbildung \ref{fig:intro_verbesserung_genauigkeit})
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth,trim={5cm 8cm 5cm 9cm},clip]{graphics/intro/intro_alicona_basics}
+    \caption[Folie]{Genauigkeit, Präzision, Richtigkeit, Quelle: Eigene Abbildung (nach Alicona Präsentation "optische oberflöchen - messtechnik")}
+    \label{fig:intro_verbesserung_genauigkeit}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth,trim={8cm 4cm 8cm 4cm},clip]{graphics/intro/intro_verbesserung_der_genauigkeit}
+    \caption[Folie]{Verbesserung der Genauigkeit, Quelle: Eigene Abbildung (nach Alicona Präsentation "optische oberflöchen - messtechnik")}
+    \label{fig:intro_verbesserung_genauigkeit}
+\end{figure}
+
+Typischerweise haben Robotersysteme vergleichsweise hohe Präzision, aber nur geringe Genauigkeit. Dies ist hauptsächlich darauf zurückzuführen, dass bei den meisten Kinematiken die Pose des End-Effektors nicht oder nur unter großem Aufwand erfasst werden kann. Entsprechend werden Positionsabweichungen nicht am End-Effektor sondern fernab an den angetriebenen Gelenken durch eindimensionale Längen- oder Winkelmessgeräte erfasst. Die einschlägige Literatur unterscheidet zwischen Regelstrategien auf Basis von \emph{joint-space} und \emph{task-space}, also ob die entsprechenden Positionsabweichungen an den Gelenken oder am End-Effektor bestimmt werden. Besonders bei Kinematiken mit sechs Freiheitsgraden gilt die Istwert-Erfassung auf Basis von \emph{task-space} als äußerst schwierig.\footcite[Vgl.][671]{Ting2013} 
+
+Die \emph{joint-space}-Strategie hat den entscheidenden Nachteil, dass viele auf die Genauigkeit des Robotersystems Einfluss nehmende Faktoren unzureichend bis gar nicht berücksichtigt werden können. Zu diesen Faktoren zählen Fertigungsgenauigkeiten der mechanischen Struktur, Nachgiebigkeiten auf Grund von Krafteinwirkungen, thermisch bedingte Verformungen sowie Spiel, Reibungseffekte und andere. Entsprechend werden Robotersysteme bewusst hinsichtlich hoher Struktursteifigkeit und Spielfreiheit konzipiert um diese nicht erfassbaren Einflüsse möglichst konstruktiv zu minimieren. Kinematiken mit mangelhafter Struktursteifigkeit können ausschließlich durch direkte Messung im Sinne der \emph{task-space}-Strategie hohe Genauigkeiten erzielen.\footcite[Vgl.][20-21]{Spong2004}
+
+\begin{em}
+The accuracy of a manipulator is a measure of how close the manipulator can come to
+a given point within its workspace. Repeatability is a measure of how close a manipulator can return to a previously taught point. Most present day manipulators are highly
+repeatable but not very accurate. The primary method of sensing positioning errors in
+most cases is with position encoders located at the joints, either on the shaft of the motor
+that actuates the joint or on the joint itself. There is typically no direct measurement of
+the end-effector position and orientation. One must rely on the assumed geometry of the
+manipulator and its rigidity to infer (i.e., to calculate) the end-effector position from the
+measured joint angles. Accuracy is affected therefore by computational errors, machining
+accuracy in the construction of the manipulator, flexibility effects such as the bending of
+the links under gravitational and other loads, gear backlash, and a host of other static and
+dynamic effects. It is primarily for this reason that robots are designed with extremely
+high rigidity. Without high rigidity, accuracy can only be improved by some sort of direct sensing of the end-effector position, such as with vision.Once a point is taught to the manipulator, however, say with a teach pendant, the above
+effects are taken into account and the proper encoder values necessary to return to the given
+point are stored by the controlling computer. Repeatability therefore is affected primarily by
+the controller resolution. Controller resolution means the smallest increment of motion
+that the controller can sense. The resolution is computed as the total distance traveled by
+the tip divided by 2n, where n is the number of bits of encoder accuracy. In this context,
+linear axes, that is, prismatic joints, typically have higher resolution than revolute joints,
+since the straight line distance traversed by the tip of a linear axis between two points is
+less than the corresponding arclength traced by the tip of a rotational link.
+In addition, as we will see in later chapters, rotational axes usually result in a large
+amount of kinematic and dynamic coupling among the links with a resultant accumulation
+of errors and a more difficult control problem. \footcite[Vgl.][20-21]{Spong2004}
+\end{em}
+
+\begin{em}
+Let us examine more closely the current technology behind robot mechanisms. The links are moved by actuators, which typically are electrically driven
+(e.g., by DC or AC motors, stepper motors, or shape memory alloys) but can
+also be driven by pneumatic or hydraulic cylinders. In the case of rotating electric motors, these would ideally be lightweight, operate at relatively low rotational speeds (e.g., in the range of hundreds of RPM), and be able to generate
+large forces and torques. Since most currently available motors operate at low
+torques and at up to thousands of RPM, speed reduction and torque amplification are required. Examples of such transmissions or transformers include
+gears, cable drives, belts and pulleys, and chains and sprockets. These speedreduction devices should have zero or low slippage and backlash (defined as
+the amount of rotation available at the output of the speed-reduction device
+without motion at the input). Brakes may also be attached to stop the robot
+quickly or to maintain a stationary posture.
+Robots are also equipped with sensors to measure the motion at the joints.
+For both revolute and prismatic joints, encoders, potentiometers, or resolvers
+measure the displacement and sometimes tachometers are used to measure velocity. Forces and torques at the joints or at the end-effector of the robot can be
+measured using various types of force torque sensors. \footcite[Vgl.][1-2]{Lynch2017} 
+\end{em}
+
+\section{Parallelkinematische Maschinen und Hexapoden}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/intro/intro_pkm_advantages.jpg}
+    \caption[Folie]{Parallel- vs Seriellkinematiken, \\Quelle: Physik Instrumente)}
+    \label{fig:intro_verbesserung_genauigkeit}
+\end{figure}
+
+Hexapod-Kinematiken sind Mechanismen mit geschlossenen kinematischen Ketten welche in verschiedensten technischen Anwendungen zur Manipulation von Objekten eingesetzt werden. Diese Robotersyteme gehören zur Gruppe der Parallelkinematischen Maschinen (PKM) und zeichnen sich im Besonderen durch gute Werte hinsichtlich Traglastverhalten, Struktursteifigkeit und Genauigkeit bzw. Präzision aus. Dementsprechend haben sich Hexapod-Kinematiken in Bereichen durchgesetzt in denen eine oder mehrere dieser Eigenschaften gefordert sind, wie beispielsweise für Flugsimulatoren und Weltraumteleskope aber auch zur Feinpositionierung in der Nanotechnologie und im Prüf- und Messwesen. 
+
+Hexapod-Kinematiken aus den zuletzt genannten Bereichen sind Präzisionsmaschinen und sind Gegenstand der Untersuchungen dieser Arbeit.
+
+Während Hexapoden für die Nanotechnik Genauigkeiten bis in den einstelligen Nanometer-Bereich aufweisen, unterliegen sie jenen für das Prüf- und Messfeld in der Größe ihrer Verstellwege, also ihres Arbeitsraums. Bedingt ist diese Kluft durch grundsätzlich gänzlich unterschiedlich Ausführungen der Gelenke und Linearantriebe. So sind nanometergenaue Kinematiken zwangsläufig mit Festkörpergelenken und Piezoverstellern ausgeführt, wo im Gegensatz jene der anderen Gruppe auf wälz- oder gleitgeführte Gelenke und elektromotorische Antriebe mit Spindeln setzen. Durch die immer höheren Anforderungen noch genauer Messen zu können besteht der Bedarf an Positioniervorrichtungen die bei gleichzeitig großen Arbeitsräumen noch im Sub-Mikrometer-Bereich positionieren können. Diese Hybrid-Maschinen sollen in weiterer Folge als nanoskalige Hexapod-Kinematiken bezeichnet werden und sind Gegenstand der Untersuchungen dieser Arbeit.
+
+
+%%%%%%%%%%
+\begin{em}
+Mechanical systems that allow a rigid body (here called an end-effector)
+to move with respect to a fixed base, play a very important role in numerous applications. A rigid body in space can move in various ways, in
+translation or rotary motion. These are called its degrees of freedom. The
+total number of degrees of freedom of a rigid body in space cannot exceed 6 (for example three translatory motions along mutually orthogonal
+axes, and three rotary motions around these axis). The position and the
+orientation of the end-effector (here called its pose) can be described by
+its generalized coordinates; these are usually the coordinates of a specific
+point of the end-effector and the angles that define its orientation, but may
+be any other set of parameters that allows one to define uniquely the pose
+of the end-effector. As soon as it is possible to control several degrees of
+freedom of the end-effector via a mechanical system, this system can be
+called a robot.\footcite[Vgl.][1]{Merlet2006}
+\end{em}
+
+\begin{em}
+The low transportable load and poor accuracy are both inherent in the
+mechanical architecture of existing manipulators, and in particular of the
+serial disposition of the links. Each of them has to support the weight of the
+segments following it in addition to the load: they are therefore all subject
+to large flexure torques, which means they must be stiffened, and thus
+become heavier. Positioning accuracy obviously depends on the flexural
+deformations that are not measured by the robot internal sensors. Moreover
+the links magnify errors: a small measurement error in the internal sensors
+of the first one or two links will quickly lead to a large error in the position
+of the end-effector. For example, for a one meter long arm made up of just
+one revolute joint, a measurement error of 0.06 degrees leads to an error
+of 1 mm in the position of the end-effector. The presence of a drive with a
+reduction gear also induces a backlash which leads to inaccuracy. The violation of the assumed geometric constraints between the axes of
+the links also constitutes an important source of positioning errors. A slight
+perpendicularity error between the first two axes of a spherical manipulator
+will lead to errors in all vertical motions that, given the amplitude of the
+motions, must be taken into account. Note that the successive positions of
+the links, together with the necessity of stiffening them, imply that the moving parts of the robot will have a significant mass. As a consequence, during
+high velocity motions, the manipulator experiences inertia, centrifugal and
+Coriolis forces that make the control of the robot complex.
+Serial robots operate under the action of two kind of forces: inertia and
+friction. These forces have different scales: inertia forces essentially vary
+with the square of the lengths of the links; friction forces are relatively unaffected by such dimensions. This means that one cannot design a micro
+serial robot simply by scaling down a larger version; under such scaling,
+the inertia forces are reduced while the friction forces remain relatively unchanged. We conclude that serial robots are inappropriate for tasks requiring either the manipulation of heavy loads, or a good positioning accuracy,
+or to work at different scales.\footcite[Vgl.][4]{Merlet2006}
+\end{em}
+
+\begin{em}
+Mechanical systems that allow a rigid body (here called an end-effector)
+to move with respect to a fixed base, play a very important role in numerous applications. A rigid body in space can move in various ways, in
+translation or rotary motion. These are called its degrees of freedom. The
+total number of degrees of freedom of a rigid body in space cannot exceed 6 (for example three translatory motions along mutually orthogonal
+axes, and three rotary motions around these axis). The position and the
+orientation of the end-effector (here called its pose) can be described by
+its generalized coordinates; these are usually the coordinates of a specific
+point of the end-effector and the angles that define its orientation, but may
+be any other set of parameters that allows one to define uniquely the pose
+of the end-effector. As soon as it is possible to control several degrees of
+freedom of the end-effector via a mechanical system, this system can be
+called a robot.\footcite[Vgl.][1]{Merlet2006}
+\end{em}
+
+\begin{em}
+Currently, most existing manipulators present a decidedly anthropomorphic
+character, usually strongly resembling a human arm. They are constituted
+of a succession of rigid bodies, each of them being linked to its predecessor
+and its successor by a one-degree-of-freedom joint, for example allowing
+the rotation of a rigid body around an axis , or the translatory motion of a
+rigid body. This architecture will be called a serial robot with analogy to
+electrical systems. An example of a serial mechanism is the spherical robot,
+where a succession of segments goes from the base to the end-effector, each
+segment being linked to its successor by a revolute joint. If each of the n
+joints is actuated, it will usually be possible to control n degrees of freedom of the end-effector.\footcite[Vgl.][1-2]{Merlet2006}
+\end{em}
+
+Parallelkinematiken haben eigentlich keine Baugruppen, die im geometrischen Sinne parallel zueinander sind. Woher der Begriff kommt, verdeutlicht Abb. 1.1. Bei einer konventionellen seriellen Struktur sind alle Bewegungsachsen nacheinander angeordnet. Die erste Schwenkachse trägt z. B. die zweite Schwenkachse; diese wiederum trägt die translatorische Achse. Jede weitere Achse ergänzt den Mechanismus um einen weiteren Freiheitsgrad. Dabei handelt es sich um eine offene kinematische Kette; jeder Antrieb wird mit den Massen der nachfolgenden Glieder und Antriebe
+belastet. Die steigenden Anforderungen an die dynamischen Eigenschaften von Maschinen führen daher in ein Dilemma: Werden leistungsfähigere Antriebe in Kombination mit zusätzlichen Versteifungen verwendet, erhö-
+hen sich die zu bewegenden Massen. Dies erfordert wiederum eine Steigerung der Antriebsleistung, die mit weiterer Massevergrößerung verbunden ist usw. werden. Es entstehen so genannte geschlossene kinematische Ketten, wodurch u. a. eine Parallelschaltung der Steifigkeiten der einzelnen Ketten erreicht wird. Bei rein paralleler Bauweise enthält jede Kette genau einen Antrieb, so dass die Anzahl der Gelenkketten mit dem Freiheitsgrad der Struktur übereinstimmt. Mechanismen, die innerhalb einer Gelenkkette über mehrere Antriebe verfügen, bezeichnet man als hybride Parallelkinematiken. Im Gegensatz dazu greifen bei einer Parallelkinematik alle Bewegungsachsen direkt oder dicht an der zu bewegenden Arbeitsplattform an. Um eine gewünschte Bewegung auszuführen, müssen alle Antriebe bewegt werden. Es entstehen so genannte geschlossene kinematische Ketten, wodurch u. a. eine Parallelschaltung der Steifigkeiten der einzelnen Ketten erreicht wird. Bei rein paralleler Bauweise enthält jede Kette genau einen Antrieb, so dass die Anzahl der Gelenkketten mit dem Freiheitsgrad der Struktur übereinstimmt. Mechanismen, die innerhalb einer Gelenkkette über mehrere Antriebe verfügen, bezeichnet man als hybride Parallelkinematiken. 
+\footcite[Vgl.][1-2]{Neugebauer2006}
+
+Parallelkinematiken weisen im Vergleich zu seriellen Kinematiken eine
+ganze Reihe von Vorteilen auf. Besonders hervorzuheben sind die geringen zu bewegenden Massen sowie die günstigen dynamischen Eigenschaften. Bei entsprechender Wahl der Gelenke werden die Glieder überwiegend auf Druck oder Zug beansprucht. Im Vergleich zu Industrierobotern ist besonders die hohe Wiederholgenauigkeit hervorzuheben. Natürlich gibt es auch Nachteile, so z. B. der im Verhältnis zum Bauraum relativ kleine Arbeitsraum, die teilweise geringen Schwenkwinkel und die durch Koordinatentransformation aufwändige Steuerung. Ein weiterer Nachteil gegenüber Präzisions-Werkzeugmaschinen sind die noch zu geringen absoluten Positioniergenauigkeiten. Auch Entwicklung und Optimierung angepasster Maschinenelemente wie Kardan- und Kugelgelenke bieten noch Handlungsbedarf. \footcite[Vgl.][2]{Neugebauer2006}
+
+Einige Jahre später wurde ein parallelkinematischer Mechanismus entwickelt, der Berühmtheit erlangte und tausendfach nachgebaut wurde: die auf dem (damals schon längst bekannten) Hexapod\-Prinzip basierende Reifenprüfeinrichtung des Engländers Eric Gough, der für die DUNLOP RUBBER CO. in Birmingham arbeitete. Ziel der Entwicklung war, die Eigenschaften von Flugzeugreifen unter verschiedensten Belastungsbedingungen testen zu können, Abb. 1.4. \footcite[Vgl.][4]{Neugebauer2006}
+
+\begin{em}
+A parallel manipulator is one in which the links form a closed chain. More specifically, a
+parallel manipulator has two or more independent kinematic chains connecting the base to
+the end-effector. Figure 1.19 shows the ABB IRB 940 Tricept robot, which has a parallel
+configuration. The closed chain kinematics of parallel robots can result in greater structural
+rigidity, and hence greater accuracy, than open chain robots.\footcite[Vgl.][18]{Spong2004}
+\end{em}
+
+\begin{em}
+Parallel robots, also sometimes called hexapods or Parallel Kinematic Machines (PKM), are closed-loop mechanisms presenting very good performances in terms of accuracy, rigidity and ability to manipulate large loads.
+They are been used in a large number of applications ranging from astronomy to flight simulators, and are becoming increasingly popular in the
+machine-tool industry.\footcite[Vgl.][XV]{Merlet2006}
+\end{em}
+%%%%%%%%%%
+
+\section{Problemstellung}
+
+\section{Ziel der Arbeit}
+
+\section{Aufbau der Arbeit}
+
+\section{Paper-Zitate}
+
+\subsection{Ting: Measurement and calibration for Stewart micromanipulation system}
+Micro-positioning technique becomes very important for
+precision engineering in various application areas such as semiconductor, biomedical science, optics and microscopy. Several
+popular micro-positioning platforms, for example, the scanners of STM, AFM, 6-dof hexagonal structures have been used
+widely. Since the demand of high precision, the unavoidable
+errors come from the mechanism manufacture and from the
+assembly are critical factors.\footcite[Vgl.][226]{Ting2007}
+
+Piezoelectric actuator is of good response, high stiffness,
+nanometer output, less EMI effect, etc. It is quite suitably used
+for micro-positioning platform. However, the hysteresis effect,
+which reduces the response, is an obvious and serious problem in
+high precision engineering.\footcite[Vgl.][226]{Ting2007}
+
+Via the inverse kinematics between the
+joint and the end-effector and the interpolation method on the
+assumption of small variation, an error compensation model is
+developed to calibrate the platform output with good accuracy
+of about 1 m in position and 10 degree in orientation.\footcite[Vgl.][266]{Ting2007}
+
+A 6-dof Stewart type micro-positioning platform driven by
+stack type piezoelectric actuators, and employed universal joints
+is shown in Fig. 1. Each actuator canreach themaximum longitudinal displacement of 160 m with the input voltage up to 150 V. \footcite[Vgl.][226]{Ting2007}
+
+According to the inverse hysteresis
+model in Section 4, the error is in the range of 0.1 m. However,
+in fact, the measurement on the end-effector shows large error
+existing, which is mainly caused by manufacture and assembly
+errors. Thus, error compensation method is applied to deal with
+the problem.\footcite[Vgl.][232]{Ting2007}
+
+\subsection{Ting: Composite controller design for a 6DOF Stewart nanoscale platform}
+In many applications of semiconductor, bioengineering, optics
+and so on, demand of high precision reaches nanoscale. A few of
+nanoscale platforms have been designed for those applications
+[1–5]. In general, piezoelectric actuator is used for the driving
+resource because of its good characteristics of precise movement
+and miniature resolution.Unavoidable errors creep in during
+mechanism manufacture and from assembly and nonlinearity of
+the piezoelectric actuator, which makes difficulties for precision
+control.\footcite[Vgl.][671]{Ting2013}
+
+An attempt of
+improving the target of nanoscale, flexural joints are used to
+connect the legs with the upper (movable) and lower (fixed)
+platforms to form a new 6DOF Stewart-type platform as presented in Fig. 1. \footcite[Vgl.][671]{Ting2013}
+
+For serial or parallel robots, most of
+the robot control methods are designed on the basis of joint space.
+Although task-space control can control on the end-effector (the target), the difficulty on task-space measurement on-line makes
+it impractical. Using forward kinematics to compute the pose of
+the end-effector by means of the measured joint variables is likely
+workable in parallel robot. However, the solution is not unique and
+determination of numerous possible solutions is quite complex
+and unreliable [11]. Measure of the pose of the end-effector
+is demanding. In this study, a sensor holder is built to install
+sensors located below the upper platform. Associated with the
+developed measurement method, the pose of the end-effector can
+be measured directly, thus the on-line task-space control purpose
+is achieved. Structure compliance of the platform and external
+load variation in insertion task application is concerned. Lyapunov
+function is used to determine a robust control rule with bounded
+model error along with a PID control. By use of relay feedback test
+method and genetic algorithm, optimal gains of PID are searched. \footcite[Vgl.][671]{Ting2013}
+
+A new measurement method is developed to directly measure
+the end-effector of the 6DOF nanoscale platform. As illustrated in
+Fig. 1, a sensor holder is designed and mounted on the base in the
+hollow space of the platform [12]. Entire configuration of the sensor
+employment is illustrated in Fig. 5. A nanoscale sensor (Lion Precision, Probe Model: C6-D, Driver Model: DMT22) is used, which
+provides resolution: 2.2 nm for large stroke in a range of 50 m and resolution: 0.4 nm for fine stroke in a range of 10 m. As illustrated in Fig. 5, in the XY plane, sensor #1 is employed along the y
+axis and sensor #2 is employed along the x axis and sensor #3 is
+employed with a distance D away from sensor #2 and in the direction parallel to the y axis. Similarly, in the YZ and ZX plane, sensor
+#4 is located at the center; sensors #5 and #6 are employed with a
+distance D away from the center and along the y and x axes respectively. Thus, sensors #2 and #3 are in charge of measurement in
+the X direction, and sensor #1 for the Y direction, and sensor #4,
+#5, #6 for the Z direction. Also, a light cuboid is mounted on the
+upper platform with the assigned measure points (S1, S2, S3, S4, S5,
+S6) shown in Fig. 6 for the corresponding sensors (#1, #2, #3, #4,
+#5, #6). By use of the measured data, the parameters ( dx, dy, dz, drx, dry, drzz) of the moving platform are obtained and listed in
+Table 2. The computation procedures are described as below. \footcite[Vgl.][673-674]{Ting2013}
+
+Note that there are two types of measurement error need concern. One is the surface of the measurement sensors, for example
+sensors #2 and #3 at measure points (S2, S3), should be in parallel with the surface of the movable platform; the other one is the
+computation error of rotating angle due to multiple rotations. The
+former one can be calibrated by using the pair of sensors to measure the surface of the movable platform. That is, in case the surfaces
+are not parallel, the measured distance to the movable platform is
+different. The difference can be found in advance for error compensation. The latter one is defined by geometric relationship and
+proved to be very small and negligible. However, the error can be
+computed during manipulation for error compensation. \footcite[Vgl.][674]{Ting2013}
+
+It is seen that in free-space manipulation, the average error norm of translation and orientation in the manipulation
+period for feedforward, feedback, and composite is (284 nm,
+96 nrad), (56 nm, 29 nrad), (17 nm, 5 nrad) respectively, and the maximum error norm is (540 nm, 195 nrad), (126 nm, 29 nrad),
+(46 nm, 20 nrad) respectively. The composite controller is superior
+to the others.\footcite[Vgl.][680-683]{Ting2013}
+
+It is obviously seen that the composite controller
+outperforms the other two methods. Especially, through the measured pose of the end-effector, the contact force is then computed
+(18) with the already known stiffness Kr = diag{0.114, 0.104, 0.086,
+138.839, 185.135, 166.67}. As seen, the tracking error is drastically reduced while the equivalent contact force is included in
+(19). \footcite[Vgl.][683]{Ting2013}
+
+The results show that all
+methods reach nanoscale class of precision. Without using expensive sensors, the feedforward controller alone is able to overcome
+the hysteresis effect and nearly achieve the nanoscale target especially with no external load. In case the precision scale is acceptable,
+it is a cost-effective design for the application purposes of free space
+motion. As expected, the proposed composite controller performs
+much better than the feedforward and feedback controller alone.
+Further experiments for more complex application encountered
+with external force or torque from various directions will be tackled
+in the near future.\footcite[Vgl.][683]{Ting2013}
+
+\subsection{Shi: Kinematic modeling and calibration of a flexure based hexapod nanopositioner}
+Flexure or compliant mechanisms [1] composed of flexure
+hinges and leaf springs have the advantage of no backlash and
+ultrahigh precision. They have been widely used in precision
+nanopositioners or naomanipulators which play an important
+role in emerging nanotechnology [2]. Compliant parallel platform
+mechanisms combine the advantages of flexure mechanisms and
+parallel platforms, and have received particular attention from nanotechnologists [3–7]. However, modeling and controller design has
+been a challenging task due to their inherent structural complexity and difficulties in measuring the six-degree-of-freedom (6DOF)
+positioning accuracy.
+Kinematic calibration is the mapping of the output movement
+relative to the input to the actuators by means of physical experiments. It is one of the key steps in the development of a controller.\footcite[Vgl.][117]{Shi2013} 
+
+In conclusion, we have presented a two-phase platform calibration method for a hexapod nanopositioner. First, a kinematic
+model is derived for the nanopositioner platform. Next, a new
+calibration set for the platform is determined using an interferometer and an autocollimator to measure the displacements
+in six degrees of freedom. Kinematic-model-based calibration
+is used to get more accurate results. The results show that
+the maximum of rotational error is 0.0024◦ and the maximum
+of translational error is 3.34 m. In future work, a controller
+would be developed based on the calibrated Jacobian matrix.
+Furthermore, this calibration method can be applied to a smallscale hexapod platform realized using microelectromechanical
+systems.\footcite[Vgl.][124]{Shi2013}
+
+

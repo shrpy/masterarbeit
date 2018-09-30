@@ -1,0 +1,60 @@
+\thispagestyle{scrheadings}
+\section{Ergebnis der Extremwert-Analyse}
+\label{results-sens}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{results/allg}
+    \caption[Folie]{Folie, Quelle: Eigene Darstellung}
+    \label{fig:allg}
+\end{figure}
+
+\thispagestyle{scrheadings}
+\section{Ergebnis der Drift-Analyse}
+\label{results-drift}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{results/drift1}
+    \caption[Folie]{Folie, Quelle: Eigene Darstellung}
+    \label{fig:drift1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{results/drift2}
+    \caption[Folie]{Folie, Quelle: Eigene Darstellung}
+    \label{fig:drift2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{results/drift3}
+    \caption[Folie]{Folie, Quelle: Eigene Darstellung}
+    \label{fig:drift3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{results/drift4}
+    \caption[Folie]{Folie, Quelle: Eigene Darstellung}
+    \label{fig:drift4}
+\end{figure}
+
+\thispagestyle{scrheadings}
+\section{Ergebnis der Sensitivitäts-Analyse}
+\label{results-sens}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{results/sens1}
+    \caption[Folie]{Folie, Quelle: Eigene Darstellung}
+    \label{fig:sens1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{results/sens2}
+    \caption[Folie]{Folie, Quelle: Eigene Darstellung}
+    \label{fig:sens2}
+\end{figure}

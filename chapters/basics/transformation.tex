@@ -1,0 +1,214 @@
+%---------------------------------------------------------------------------------------------%
+% Chapter: Koordinatentransformation
+%---------------------------------------------------------------------------------------------%
+Für die kinematische Modellierung von Hexapoden ist die korrekte Beschreibung ihrer Transformationsgleichungen von elementarer Bedeutung. Folglich sollen in diesem Abschnitt die Grundlagen der Koordinatentransformation in Ebene und Raum wiederholt werden. \\
+
+%Mit den erarbeiteten mathematischen Grundoperationen soll im Anschluss ein Gleichungssystem zur Beschreibung der \glqq 6D-Transformation \grqq einer allgemeinen Hexapod-Kinematik aufgestellt werden.\\
+%Die mobile Plattform einer Hexapod-Kinematik lässt sich in sechs Freiheitsgraden bewegen, wobei drei Translationen und drei Rotationen um jede der drei Raumachsen möglich sind. Die mathematische Beschreibung dieser kombinierten Bewegungen erfolgt im Allgemeinen über entsprechende Transformationsmatrizen die eine \glqq 6D-Transformation \grqq in nur einer Matrixoperation ermöglichen. Für die Aufstellung solcher Transformationsgleichungen bedarf es der Festlegung einer Konvention hinsichtlich der Transformationsfolge die sich je nach Anforderung an das kinematische System bzw. die Anwendung unterscheiden kann und damit die spezielle Form der Transformationsmatrix festlegt. Die Transformationsfolge definiert, in welcher Folge die rotatorischen Operationen gereiht sind und ob die Translationen vor oder nach den rotatorischen Transformationen einfließen. Häufige Festlegungen sind die \glqq Euler-Winkel-Konvention \grqq und die \glqq Roll-Nick-Gier-Konvention \grqq. \\
+
+Unter einer Koordinatentransformation wird im Allgemeinen die Übersetzung von einem Koordinatensystem $K = \{O;\bvec{e_{i}}\}$ auf ein gleichartiges System $K^\prime = \{O^\prime;\bvec{e_{i}}^\prime\}$, $i=1,2,\ldots,n$ verstanden. Man unterscheidet zwei grundsätzliche Fälle:
+
+\subsubsection{Fall A - Feststehendes System und bewegtes Objekt} 
+Übergang von einer Objektkonfiguration $P$ in eine neue Konfiguration $P^\prime$ wobei das Koordinatensystem $K$ unverändert bleibt. Beispiel: {\color{red}Überwachung vom Flugverkehr mittels Radar, wobei der Kontrolltower das ortsfeste System $K$ stellt und die sich im Luftraum befindlichen Flugzeuge $P_{i}$ relativ zu $K$in eine neue Konfiguration $P_{i}^\prime$ bewegen.}
+\subsubsection{Fall B - Bewegtes System und feststehendes Objekt}
+Übergang vom System $K$ in ein gleichartiges System $K^\prime$ wobei die Objekte $P_{i}$ nicht transformiert werden. Beispiel: Bearbeitung eines eingespannten, also ortsfesten Werkstücks in einer Werkzeugmaschine. Das Werkzeugkoordinatensystem $K^\prime$ wird hierbei gemäß des CNC-Programms relativ zum Maschinenkoordinatensystem $K$ bewegt. 
+\footcite[Vgl.][1-2]{Neugebauer2006}
+\footcite[Vgl.][95]{Keferstein2018}
+\footcite[Vgl.][8-20]{Wloka1994}
+\footcite[Vgl.][38\psqq]{Bartsch2014}
+\footcite[Vgl.][33]{Pfeifer2010}
+\footcite[Vgl.][12]{Schuth2017}
+%---------------------------------------------------------------------------------------------%
+% Subsection: Koordinatentransformation in der Ebene
+%---------------------------------------------------------------------------------------------%
+\newpage
+\subsection{Translation in der Ebene}
+\label{subsec:translation_2d}
+%---------------------------------------------------------------------------------------------%
+% Fall A - Verschiebung des Objekts
+%---------------------------------------------------------------------------------------------%
+\subsubsection{Fall A - Verschiebung des Objekts}
+Betrachtet werde ein Punkt $P$ in der $xy$-Ebene, dessen Position durch den Ortsvektor $\bvec{x}$ bestimmt sei, siehe \cref{fig:translation_2d_a}. Mit dem in \cref{eq:translation_2d_1} eingeführten Translationsvektor $\bvec{t}$ erfolgt eine Verschiebung von $P$ nach $P^\prime$. Der Übergang von $\bvec{x}$ in den neuen Ortsvektor $\bvec{x}^\prime$ wird durch die Transformationsgleichung \bref{eq:translation_2d_2} beschrieben.
+%---------------------------------------------------------------------------------------------%
+\begin{equation}
+    \bvec{t} = t_{x}\bvec{{e_{x}}}+t_{y}\bvec{e_{y}} \label{eq:translation_2d_1}
+\end{equation}
+\begin{equation}
+    \bvec{x}^\prime = \bvec{x}+\bvec{t} 
+    \quad\Longleftrightarrow\quad
+    \begin{cases}
+        x^\prime=x+t_{x}\\
+        y^\prime=y+t_{y}
+    \end{cases}
+    \label{eq:translation_2d_2}\\
+\end{equation}
+%---------------------------------------------------------------------------------------------%
+% Fall B - Verschiebung des Ursprungs
+%---------------------------------------------------------------------------------------------%
+\subsubsection{Fall B - Verschiebung des Ursprungs}
+\cref{fig:translation_2d_b} zeigt die Verschiebung des Ursprungs $O$ nach $O^\prime$ durch den in \cref{eq:translation_2d_1} eingeführten Translationsvektor $\bvec{t}$. Die Position von $P$ ändert sich nicht, stattdessen wird das System $K = \{O;\bvec{x},\bvec{y}\}$ in das System $K^\prime = \{O^\prime;\bvec{x}^\prime\,\bvec{y}^\prime\}$ übergeführt. Durch die Änderung des Bezugssystems erfolgt eine Transformation von $\bvec{x}$ nach $\bvec{x}^\prime$ gemäß \cref{eq:translation_2d_3}.
+%---------------------------------------------------------------------------------------------%
+\begin{equation}
+    \bvec{x}^\prime = \bvec{x}-\bvec{t} 
+    \quad\Longleftrightarrow\quad
+    \begin{cases}
+        x^\prime=x-t_{x}\\
+        y^\prime=y-t_{y}
+    \end{cases}
+    \label{eq:translation_2d_3}
+\end{equation}
+Der Vorzeichenwechsel von \cref{eq:translation_2d_2} auf \cref{eq:translation_2d_3} macht deutlich, dass die Transformation von \textbf{Fall A} der \glqq inversen Transformation\grqq\ von \textbf{Fall B} entspricht, und umgekehrt. Die Wahl des Transformationsfalls entscheidet somit über die Transformationsrichtung. Dieses Merkmal ist charakteristisch für alle in weiterer Folge betrachteten Transformationsarten.
+%---------------------------------------------------------------------------------------------%
+% TikZ: Translation in der Ebene
+%---------------------------------------------------------------------------------------------%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \input{tikz/basics/translation_2d_a.tex}
+        \caption{Verschiebung des Objekts}\label{fig:translation_2d_a}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \input{tikz/basics/translation_2d_b.tex}
+        \caption{Verschiebung des Ursprungs}\label{fig:translation_2d_b}
+    \end{subfigure}
+    \caption[Translatorische Transformation in der Ebene]{Translatorische Transformation in der Ebene, Quelle: Eigene Darstellung}\label{fig:translation_2d}
+\end{figure}
+%---------------------------------------------------------------------------------------------%
+\newpage
+\subsection{Rotation in der Ebene}
+\label{subsec:rotation_2d}
+%---------------------------------------------------------------------------------------------%
+% Fall A - Drehung des Objekts
+%---------------------------------------------------------------------------------------------%
+\subsubsection{Fall A - Drehung des Objekts}
+Betrachtet werde ein Punkt $P$ in der $xy$-Ebene mit dem Ortsvektor $\bvec{x}$, welcher über den Winkel $\varphi$ um den Ursprung $O$ gedreht wird. Bei der Drehung von $\bvec{x}$  bleibt dessen Länge naturgemäß erhalten. Es gilt der Zusammenhang: $r = |\bvec{x}| = |\bvec{x}^\prime|$. Entsprechend \cref{fig:rotation_2d_b} folgt für die Komponenten der Ortsvektoren:
+\begin{align}
+    x &= r\cos{\theta}\label{eq:rotation_2d_a1}\\
+    y &= r\sin{\theta}\label{eq:rotation_2d_a2}\\
+    x^\prime & = r\cos{(\theta+\varphi)}\label{eq:rotation_2d_a3}\\
+    y^\prime & = r\sin{(\theta+\varphi)}\label{eq:rotation_2d_a4}
+\end{align}
+Mit dem Additionstheorem für trigonometrische Funktionen folgt aus \bref{eq:rotation_2d_a3} und \bref{eq:rotation_2d_a4}:
+\begin{align}
+    x^\prime & = r\cos{\theta}\cos{\varphi}-r\sin{\theta}\sin{\varphi}\label{eq:rotation_2d_a5}\\
+    y^\prime & = r\cos{\theta}\sin{\varphi}+r\sin{\theta}\cos{\varphi}\label{eq:rotation_2d_a6}
+\end{align}
+\cref{eq:rotation_2d_a1,eq:rotation_2d_a2} eingesetzt in \bref{eq:rotation_2d_a5} und \bref{eq:rotation_2d_a6} ergibt weiters für $x^\prime$ und $y^\prime$:
+\begin{align}
+    x^\prime & = x\cos{\varphi}-y\sin{\varphi}\label{eq:rotation_2d_a7}\\
+    y^\prime & = x\sin{\varphi}+y\cos{\varphi}\label{eq:rotation_2d_a8}
+\end{align}
+Damit folgt für die Transformationsgleichung in Vektorform mit der Rotationsmatrix $\bvec{R}$:
+\begin{gather}
+    \bvec{R}
+    =
+    \begin{pmatrix}
+        \cos{\varphi} & -\sin{\varphi} \\
+        \sin{\varphi} & \cos{\varphi} 
+    \end{pmatrix}
+    \label{eq:rotation_2d_a9}
+\end{gather}
+\begin{equation}
+    \bvec{x}^\prime = \bvec{R}\bvec{x} \label{eq:rotation_2d_a10}
+\end{equation}
+%---------------------------------------------------------------------------------------------%
+% TikZ: Rotation in der Ebene
+%---------------------------------------------------------------------------------------------%
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \input{tikz/basics/rotation_2d_a.tex}
+        \caption{Drehung des Objekts}\label{fig:rotation_2d_a}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \input{tikz/basics/rotation_2d_b.tex}
+        \caption{Drehung des Ursprungs}\label{fig:rotation_2d_b}
+    \end{subfigure}
+    \caption[Rotatorische Transformation in der Ebene]{Rotatorische Transformation in der Ebene, Quelle: Eigene Darstellung}\label{fig:rotation_2d}
+\end{figure}
+%---------------------------------------------------------------------------------------------%
+% Fall B - Drehung des Ursprungs
+%---------------------------------------------------------------------------------------------%
+\subsubsection{Fall B - Drehung des Ursprungs}
+\cref{fig:rotation_2d_b} zeigt die Drehung des Koordinatensystems $K = \{O;\bvec{x},\bvec{y}\}$ um den Winkle $\varphi$ in das neue System $K^\prime = \{O^\prime;\bvec{x}^\prime\,\bvec{y}^\prime\}$. $P,P^\prime$ wird nicht bewegt, dafür ändern sich dessen Koordinaten, ausgedrückt durch den neuen Ortsvektor $\bvec{x}^\prime$. Zur Beschreibung der Transformation von $\bvec{x}$ nach $\bvec{x}^\prime$ lassen sich \cref{eq:rotation_2d_b5,eq:rotation_2d_b6} anhand \cref{fig:rotation_2d_b} entwicklen. Für die abgebildeten Terme lässt sich schreiben:
+\begin{align}
+    p &= x\cos{\varphi}\label{eq:rotation_2d_b1}\\
+    q &= x\sin{\varphi}\label{eq:rotation_2d_b2}\\
+    r &= y\cos{\varphi}\label{eq:rotation_2d_b3}\\
+    s &= y\sin{\varphi}\label{eq:rotation_2d_b4}
+\end{align}
+Es folgt für die Komponenten des Vektors $\bvec{x}^\prime$:
+\begin{align}
+    x^\prime &= p + s = x\cos{\varphi} + y\sin{\varphi}\label{eq:rotation_2d_b5}\\
+    y^\prime &= r - q = y\cos{\varphi} - x\sin{\varphi}\label{eq:rotation_2d_b6}
+\end{align}
+Mit der Rotationsmatrix $\bvec{R}$ ergibt sich für die Transformationsgleichung in Vektorform:
+\begin{gather}
+    \bvec{R}=
+    \begin{pmatrix}
+        \cos{\varphi} & \sin{\varphi} \\
+        -\sin{\varphi} & \cos{\varphi} 
+    \end{pmatrix}
+    \label{eq:rotation_2d_b7}
+\end{gather}
+\begin{equation}
+    \bvec{x}^\prime = \bvec{R}\bvec{x} \label{eq:rotation_2d_b8}
+\end{equation}
+Bei Gegenüberstellung der Rotationsmatrizen aus \textbf{Fall A} \bref{eq:rotation_2d_a3} mit jener aus \textbf{Fall B} \bref{eq:rotation_2d_b7} zeigt sich der charakteristische Vorzeichenwechsel, wie er schon aus der Translation bekannt ist. Die Rotationsmatrizen sind orthogonal, womit allgemein gilt:
+\begin{equation}
+    \bvec{R}^{-1} = \bvec{R}^{T}\label{eq:rotation_2d_b9}
+\end{equation}
+Es kann damit erneut gezeigt werden, dass die Transformation für den \textbf{Fall A} der \glqq inversen Transformation\grqq\ von \textbf{Fall B} entspricht, und umgekehrt.
+\begin{equation}
+    \bvec{R}|_{Fall\,A} = \bvec{R}^{-1}|_{Fall\,B}
+    \quad\Longleftrightarrow\quad
+    \bvec{R}|_{Fall\,B} = \bvec{R}^{-1}|_{Fall\,A}
+    \label{eq:rotation_2d_b10}
+\end{equation}
+%---------------------------------------------------------------------------------------------%
+% Subsection: Zusammengesetzte Transformation in der Ebene
+%---------------------------------------------------------------------------------------------%
+\subsection{Zusammengesetzte Transformationen in der Ebene}
+\label{subsec:transformation_2d}
+\begin{equation}
+    \bvec{R}^{-1} = \bvec{R}^{T}\label{eq:rotation_2d_b9}
+\end{equation}
+\begin{equation}
+    \bvec{R}^{-1} = \bvec{R}^{T}\label{eq:rotation_2d_b9}
+\end{equation}
+
+%---------------------------------------------------------------------------------------------%
+% Subsection: Zusammengestzte Transformation in der Ebene
+%---------------------------------------------------------------------------------------------%
+\subsection{Transformationen im Raum}
+\label{subsec:translation_2d}
+
+\begin{figure}[H]
+    \centering
+    \input{tikz/basics/trans3d_ortsvektor.tex}
+    \caption{Ortsvektor}\label{fig:trans3d_ortsvektor}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \input{tikz/basics/trans3d_beziehung.tex}
+    \caption{Transformationsbeziheung}\label{fig:trans3d_beziehung}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \input{tikz/basics/trans3d_arithmetik.tex}
+    \caption{Transformationsarithmetik}\label{fig:trans3d_arithmetik}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \input{tikz/basics/trans3d_inverse.tex}
+    \caption{Berechnung des inversen Frames}\label{fig:trans3d_inverse}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \input{tikz/basics/trans3d_absrel.tex}
+    \caption{Absolute und relative Transformation von Frames}\label{fig:trans3d_absrel}
+\end{figure}

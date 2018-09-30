@@ -1,0 +1,63 @@
+\tdplotsetmaincoords{80}{30}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2,tdplot_main_coords]
+%---------------------------------------------------------------------------------------------------%
+% define coordinates
+%---------------------------------------------------------------------------------------------------%
+\coordinate (P) at (5,5,30);
+\coordinate (A) at (0,0,0);
+\coordinate (B) at (30,5,15);
+\coordinate (C) at (50,15,30);
+%---------------------------------------------------------------------------------------------------%
+% input macro to replace rotationmatrix
+%---------------------------------------------------------------------------------------------------%
+\input{macros/rotation_xyz.tex}
+%---------------------------------------------------------------------------------------------------%
+% define unit-vector lengths
+%---------------------------------------------------------------------------------------------------%
+\def\ux{10}
+\def\uy{10}
+\def\uz{10}
+%---------------------------------------------------------------------------------------------------%
+\begin{scope}[very thick,->,>=latex]
+\draw (A) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_A$};
+\draw (A) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_A$};
+\draw (A) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_A$};
+\end{scope}
+\node at (A) [anchor=north]{$\{A\}$};
+
+\tdsetxyzrel
+\tdplotsetrotatedcoordsorigin{(B)}
+\tdplotsetrotatedcoords{10}{0}{0}
+\begin{scope}[very thick,->,>=latex,tdplot_rotated_coords]
+\draw (B) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_B$};
+\draw (B) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_B$};
+\draw (B) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_B$};
+\end{scope}
+\node at (B) [anchor=north west]{$\{B\}$};
+
+\tdsetxyzrel
+\tdplotsetrotatedcoordsorigin{(C)}
+\tdplotsetrotatedcoords{10}{-20}{0}
+\begin{scope}[very thick,->,>=latex,tdplot_rotated_coords]
+\draw (C) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_C$};
+\draw (C) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_C$};
+\draw (C) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_C$};
+\end{scope}
+\node at (C) [anchor=north west]{$\{C\}$};
+
+
+\draw[thick,->,>=spaced latex,bend right] (A) to node[midway,anchor=north west]{${}^A_B T$} (B);
+\draw[thick,->,>=spaced latex,bend right] (B) to node[midway,anchor=north west]{${}^B_C T$} (C);
+
+\begin{scope}[very thick,->,>=spaced latex]
+\draw (A) -- (P) node[midway,anchor=south east]{${}^A\bvec{r}_P$};
+\draw (B) -- (P) node[midway,anchor=north east]{${}^B\bvec{r}_P$};
+\draw (C) -- (P) node[midway,anchor=south west]{${}^C\bvec{r}_P$};
+\end{scope}
+
+\filldraw[thick,draw=black,fill=white] (P) circle (10pt) node[anchor=south east] {$P$};
+
+\end{tikzpicture}
+\end{center}

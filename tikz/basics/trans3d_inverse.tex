@@ -1,0 +1,50 @@
+\tdplotsetmaincoords{60}{60}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2,tdplot_main_coords]
+%---------------------------------------------------------------------------------------------------%
+% define coordinates
+%---------------------------------------------------------------------------------------------------%
+\coordinate (P) at (-22,35,10);
+\coordinate (A) at (0,0,0);
+\coordinate (B) at (20,30,-5);
+%---------------------------------------------------------------------------------------------------%
+% input macro to replace rotationmatrix
+%---------------------------------------------------------------------------------------------------%
+\input{macros/rotation_xyz.tex}
+%---------------------------------------------------------------------------------------------------%
+% define unit-vector lengths
+%---------------------------------------------------------------------------------------------------%
+\def\ux{10}
+\def\uy{10}
+\def\uz{10}
+%---------------------------------------------------------------------------------------------------%
+\begin{scope}[very thick,->,>=latex]
+\draw (A) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_A$};
+\draw (A) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_A$};
+\draw (A) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_A$};
+\end{scope}
+\node at (A) [anchor=north east]{$\{A\}$};
+
+\tdsetxyzrel
+\tdplotsetrotatedcoordsorigin{(B)}
+\tdplotsetrotatedcoords{0}{0}{-35}
+\begin{scope}[very thick,->,>=latex,tdplot_rotated_coords]
+\draw (B) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_B$};
+\draw (B) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_B$};
+\draw (B) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_B$};
+\end{scope}
+\node at (B) [anchor= north west]{$\{B\}$};
+
+\begin{scope}[very thick,->,>=spaced latex]
+\draw (A) -- (P) node[midway,anchor=south east]{${}^A\bvec{r}_P$};
+\draw (B) -- (P) node[midway,anchor=south west]{${}^B\bvec{r}_P$};
+\draw (A) -- (B) node[midway,above,sloped]{${}^A\bvec{r}_{O,B}=-{}^B\bvec{r}_{O,A}$};
+\end{scope}
+
+\draw[thick,->,>=spaced latex] (A) to [bend right=25] node[midway,anchor=north west]{${}^A_B T$} (B);
+
+\filldraw[thick,draw=black,fill=white] (P) circle (10pt) node[anchor=south east] {$P$};
+
+\end{tikzpicture}
+\end{center}

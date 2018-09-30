@@ -1,0 +1,32 @@
+\tdplotsetmaincoords{60}{60}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2,tdplot_main_coords]
+%---------------------------------------------------------------------------------------------------%
+% define coordinates
+%---------------------------------------------------------------------------------------------------%
+\coordinate (R) at (0,0,0);
+\coordinate (P) at (15,5,25);
+%---------------------------------------------------------------------------------------------------%
+% input macro to replace rotationmatrix
+%---------------------------------------------------------------------------------------------------%
+\input{macros/rotation_xyz.tex}
+%---------------------------------------------------------------------------------------------------%
+% define unit-vector lengths
+%---------------------------------------------------------------------------------------------------%
+\def\ux{10}
+\def\uy{10}
+\def\uz{10}
+%---------------------------------------------------------------------------------------------------%
+\begin{scope}[very thick,->,>=latex]
+\draw (R) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_R$};
+\draw (R) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_R$};
+\draw (R) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_R$};
+\node at (R) [anchor=north east]{$\{R\}$};
+\end{scope}
+
+\draw[very thick,->,>=spaced latex] (R) -- (P) node[midway,left]{${}^R\bvec{r}_P$};
+\filldraw[thick,draw=black,fill=white] (P) circle (10pt) node[anchor=north west] {$P$};
+
+\end{tikzpicture}
+\end{center}

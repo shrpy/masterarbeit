@@ -1,0 +1,95 @@
+\tdplotsetmaincoords{80}{30}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2,tdplot_main_coords]
+%---------------------------------------------------------------------------------------------------%
+% define coordinates
+%---------------------------------------------------------------------------------------------------%
+\coordinate (R) at (0,0,0);
+\coordinate (A0) at (10,25,5);
+\coordinate (A1) at (10,25,25);
+\coordinate (A2) at (10,25,45);
+\coordinate (B0) at (30,50,4);
+\coordinate (B1) at (30,50,24);
+\coordinate (B2) at (30,50,43);
+
+%---------------------------------------------------------------------------------------------------%
+% input macro to replace rotationmatrix
+%---------------------------------------------------------------------------------------------------%
+\input{macros/rotation_xyz.tex}
+%---------------------------------------------------------------------------------------------------%
+% define unit-vector lengths
+%---------------------------------------------------------------------------------------------------%
+\def\ux{10}
+\def\uy{10}
+\def\uz{10}
+%---------------------------------------------------------------------------------------------------%
+\begin{scope}[very thick,->,>=latex]
+\draw (R) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_R$};
+\draw (R) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_R$};
+\draw (R) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_R$};
+\end{scope}
+\node at (R) [anchor=north east]{$\{R\}$};
+
+\begin{scope}[very thick,->,>=latex]
+\draw (A0) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_{A_0}$};
+\draw (A0) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_{A_0}$};
+\draw (A0) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_{A_0}$};
+\end{scope}
+\node at (A0) [anchor=north east]{$\{A_0\}$};
+
+\tdsetxyzabs
+\tdplotsetrotatedcoordsorigin{(A1)}
+\tdplotsetrotatedcoords{90}{0}{0}
+\begin{scope}[very thick,->,>=latex,tdplot_rotated_coords]
+\draw (A1) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_{A_1}$};
+\draw (A1) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_{A_1}$};
+\draw (A1) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_{A_1}$};
+\end{scope}
+\node at (A1) [anchor= south east]{$\{A_1\}$};
+
+\tdsetxyzabs
+\tdplotsetrotatedcoordsorigin{(A2)}
+\tdplotsetrotatedcoords{90}{0}{90}
+\begin{scope}[very thick,->,>=latex,tdplot_rotated_coords]
+\draw (A2) -- ++(\ux,0,0) node[anchor=south]{$\bvec{x}_{A_2}$};
+\draw (A2) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_{A_2}$};
+\draw (A2) -- ++(0,0,\uz) node[anchor=north]{$\bvec{z}_{A_2}$};
+\end{scope}
+\node at (A2) [anchor= east]{$\{A_2\}$};
+
+\begin{scope}[very thick,->,>=latex]
+\draw (B0) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_{B_0}$};
+\draw (B0) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_{B_0}$};
+\draw (B0) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_{B_0}$};
+\end{scope}
+\node at (B0) [anchor=north east]{$\{B_0\}$};
+
+\tdsetxyzrel
+\tdplotsetrotatedcoordsorigin{(A1)}
+\tdplotsetrotatedcoords{90}{0}{0}
+\begin{scope}[very thick,->,>=latex,tdplot_rotated_coords]
+\draw (B1) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_{B_1}$};
+\draw (B1) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_{B_1}$};
+\draw (B1) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_{B_1}$};
+\end{scope}
+\node at (B1) [anchor= south east]{$\{B_1\}$};
+
+\tdsetxyzrel
+\tdplotsetrotatedcoordsorigin{(A2)}
+\tdplotsetrotatedcoords{90}{0}{90}
+\begin{scope}[very thick,->,>=latex,tdplot_rotated_coords]
+\draw (B2) -- ++(\ux,0,0) node[anchor=south]{$\bvec{x}_{B_2}$};
+\draw (B2) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_{B_2}$};
+\draw (B2) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_{B_2}$};
+\end{scope}
+\node at (B2) [anchor= west]{$\{B_2\}$};
+
+\draw[thick,->,>=spaced latex] (A0) to [bend right=35] node[midway,anchor=west]{$Rot(\bvec{x}_R,90\si{\degree})$} (A1);
+\draw[thick,->,>=spaced latex] (A1) to [bend right=35] node[midway,anchor=west]{$Rot(\bvec{z}_R,90\si{\degree})$} (A2);
+
+\draw[thick,->,>=spaced latex] (B0) to [bend right=35] node[midway,anchor=west]{$Rot(\bvec{x}_{B_0},90\si{\degree})$} (B1);
+\draw[thick,->,>=spaced latex] (B1) to [bend right=35] node[midway,anchor=west]{$Rot(\bvec{z}_{B_1},90\si{\degree})$} (B2);
+
+\end{tikzpicture}
+\end{center}

@@ -1,0 +1,83 @@
+\begin{itemize}
+    \item Werkzeugmaschinen und Handhabungseinrichtungen
+\end{itemize}
+
+\section{Parallelkinematische Maschinen Neugebauer}
+\subsection{Definition}
+Parallelkinematiken haben eigentlich keine Baugruppen, die im geometrischen Sinne parallel zueinander sind. Woher der Begriff kommt, verdeutlicht Abb. 1.1. Bei einer konventionellen seriellen Struktur sind alle Bewegungsachsen nacheinander angeordnet. Die erste Schwenkachse trägt z. B. die zweite Schwenkachse; diese wiederum trägt die translatorische Achse. Jede weitere Achse ergänzt den Mechanismus um einen weiteren Freiheitsgrad. Dabei handelt es sich um eine offene kinematische Kette; jeder Antrieb wird mit den Massen der nachfolgenden Glieder und Antriebe
+belastet. Die steigenden Anforderungen an die dynamischen Eigenschaften von Maschinen führen daher in ein Dilemma: Werden leistungsfähigere Antriebe in Kombination mit zusätzlichen Versteifungen verwendet, erhö-
+hen sich die zu bewegenden Massen. Dies erfordert wiederum eine Steigerung der Antriebsleistung, die mit weiterer Massevergrößerung verbunden ist usw. werden. Es entstehen so genannte geschlossene kinematische Ketten, wodurch u. a. eine Parallelschaltung der S
+teifigkeiten der einzelnen Ketten erreicht wird. Bei rein paralleler Bauweise enthält jede Kette genau einen Antrieb, so dass die Anzahl der Gelenkketten mit dem Freiheitsgrad der Struktur übereinstimmt. Mechanismen, die innerhalb einer Gelenkkette über mehrere Antriebe verfügen, bezeichnet man als hybride Parallelkinematiken. Im Gegensatz dazu greifen bei einer Parallelkinematik alle Bewegungsachsen direkt oder dicht an der zu bewegenden Arbeitsplattform an. Um eine gewünschte Bewegung auszuführen, müssen alle Antriebe bewegt \footcite[Vgl.][1-2]{Neugebauer2006}
+
+
+
+\subsection{Vor- und Nachteile} 
+Parallelkinematiken weisen im Vergleich zu seriellen Kinematiken eine
+ganze Reihe von Vorteilen auf. Besonders hervorzuheben sind die geringen zu bewegenden Massen sowie die günstigen dynamischen Eigenschaften. Bei entsprechender Wahl der Gelenke werden die Glieder überwiegend auf Druck oder Zug beansprucht. Im Vergleich zu Industrierobotern ist besonders die hohe Wiederholgenauigkeit hervorzuheben. Natürlich gibt es auch Nachteile, so z. B. der im Verhältnis zum Bauraum relativ kleine Arbeitsraum, die teilweise geringen Schwenkwinkel und die durch Koordinatentransformation aufwändige Steuerung. Ein weiterer Nachteil gegenüber Präzisions-Werkzeugmaschinen sind die noch zu geringen absoluten Positioniergenauigkeiten. Auch Entwicklung und Optimierung angepasster Maschinenelemente wie Kardan- und Kugelgelenke bieten noch Handlungsbedarf. \footcite[Vgl.][2]{Neugebauer2006}
+
+
+\thispagestyle{scrheadings}
+\section{Allgemein}
+\label{sec1}
+
+%Dabei handelt es sich um eine offene kinematische Kette; jeder Antrieb wird mit den Massen der nachfolgenden Glieder und Antriebe belastet. Die steigenden Anforderungen an die dynamischen Eigenschaften von Maschinen führen daher in ein Dilemma: Werden leistungsfähigere Antriebe in Kombination mit zusätzlichen Versteifungen verwendet, erhöhen sich die zu bewegenden Massen. Dies erfordert wiederum eine Steigerung der Antriebsleistung, die mit weiterer Massevergrößerung verbunden ist usw.
+
+%Im Gegensatz dazu greifen bei einer Parallelkinematik alle Bewegungsachsen direkt oder dicht an der zu bewegenden Arbeitsplattform an. Um eine gewünschte Bewegung auszuführen, müssen alle Antriebe bewegt werden. Es entstehen so genannte geschlossene kinematische Ketten, wodurch u.a. eine Parallelschaltung der Steifigkeiten der einzelnen Ketten erreicht wird.
+
+%Parallelkinematiken weisen im Vergleich zu seriellen Kinematiken eine ganze Reihe von Vorteilen auf. Besonders hervorzuheben sind die geringen zu bewegenden Massen sowie die günstigen dynamischen Eigenschaften. Bei entsprechender Wahl der Gelenke werden die Glieder überwiegend auf Druck oder Zug beansprucht. Im Vergleich zu Industrierobotern ist besonders die hohe Wiederholgenauigkeit hervorzuheben. modularen Aufbaus
+
+%Ein weiterer Nachteil gegenüber Präzisions-Werkzeugmaschinen sind die noch zu geringen absoluten Positioniergenauigkeiten.\footcite[Vgl.][1-2]{Neugebauer2006}
+
+%Einige Jahre später wurde ein parallelkinematischer Mechanismus entwickelt, der Berühmtheit erlangte und tausendfach nachgebaut wurde: die auf dem (damals schon längst bekannten) Hexapod\-Prinzip basierende Reifenprüfeinrichtung des Engländers Eric Gough, der für die DUNLOP RUBBER CO. in Birmingham arbeitete. Ziel der Entwicklung war, die Eigenschaften von Flugzeugreifen unter verschiedensten Belastungsbedingungen testen zu können, Abb. 1.4. \footcite[Vgl.][4]{Neugebauer2006}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.7\textwidth]{intro/intro1}
+    \caption[Folie]{Die originale Gough-Plattform; \textbf{a} 1954 und \textbf{b} 2000, Quelle: Neugebauer (2006), Parallelkinemtische Maschinen}
+    \label{fig:stab1}
+\end{figure}
+
+Hexapod\-Kinematiken stellen eine Spezialform von Parallelkinematiken dar. 6 unabhängig voneinander verstellbare Achsen gleicher Bauart zeichnen deren wesentliche Charakteristik aus. Hexapod\-Kinematiken werden überall dort eingesetzt wo Objekte in bis zu 6 Freiheitsgraden im Raum ausgerichtet werden sollen. So finden sich Hexapod-Kinematiken in vielfältigen Bereichen wie in der Luftfahrttechnik beim Betrieb von Flugsimulatoren, in der Raumfahrt bei Andockoperation zwischen zwei Objekten (Raumkapsel, Raumstation, Shuttle) im All deren Fehlorientierung durch Hexapod-Kinematiken ausgegelichen wird bis in die Produktionstechnik, wo Hexapod-Kinematiken für vielfälige Aufgaben eingesetzt werden. Besondere Verbeitung finden Hexapod-Kinematiken in der Mess- und Prüftechnik, da mit Ihnen zum einen beliebeige Orientierungen im Prüffeld generiert werden können, während sich Hexapod-Kinematiken gleichzeitig durch besonders hohe Genauigkeiten im Positionierverhalten auszeichnen. Die Anwendung als Mess- und Prüfmittel stellt im Allgeminen besondere Anforderungen an die Kinematik, da im Prüffeld reale Bedingen für das zu prüfende Objekt generiert werden und die Kinematik gleichermaßen,wenn nicht sogar besser für diese Umgebung angepasst sein sollte.\\
+
+Hexapod-Kinematiekn für die Mess- und Prüftechnik erreichen nicht selten lineare Positioniergenauigkeiten im sub-mikro m-Bereich und reagieren daher besonders sensibel auf thermische Schwankungen die sich in Verformungen der kinematischen Struktur bemerkbar machen. Sind Hexapod-Kinematiken für ein breites Temperaturfeld auszulegen muss hierfür ungleich mehr konstruktiver Aufwand hinsichtlich Werkstoffwahl, Metrologie und thermostabile Konstruktion betrieben werden als es für Kinematikne nötig wäre die unter klimatisierten Bedingung in Messräumen eingesetzt werden. \\
+
+Diese Arbeit soll sich mit einer besonderen Klasse von Hexapod-Kinematiken befassen die sich vor allem dadurch auszeichnet, dass lineare und rotatorische Verstellwege gegenüber rotatorischer und lineare Positioniergenauigkeit verhältnismäßig groß ausfallen. So sollen Kineamtiken betrachtet werden die mit Verstellwegen in der Größenordnung von 1 mm und 10 mRad in einer Genauigkeit von 100 nm und 1 \textmu Rad positioniert werden können. Kinematiken mit soclhen Spezifikationen finden sich in unterschiedlichsten Bauformen und Konfigurationen am Markt doch gelten deren Spezifikition im Allgemeinen nur für eine Betriebstemperatur, für welche sie kalibriert wurden. Ferner stellt sich eine besondere Herausfordrung an die messtechnische Überprüfung der geforderten Genauigkeit in allen 6 Freiheitsgraden, da im Allgemeinen Messverfahren mit erforderlichen Verfahrwegen nicht die nötigen genauigkeiten erreichen und solche mit ausreichender Genauigkeit nicht für die erforderlichen Verstellwege eingesetzt werden können. \\
+
+%\footcite[Vgl.][]{article}
+%\footcite[Vgl.][]{book}
+%\footcite[Vgl.][]{booklet}
+%\footcite[Vgl.][]{conference}
+%\footcite[Vgl.][]{inbook}
+%\footcite[Vgl.][]{incollection}
+%\footcite[Vgl.][]{manual}
+%\footcite[Vgl.][]{mastersthesis}
+%\footcite[Vgl.][]{misc}
+%\footcite[Vgl.][]{phdthesis}
+%\footcite[Vgl.][]{proceedings}
+%\footcite[Vgl.][]{techreport}
+%\footcite[Vgl.][]{unpublished}
+%\footcite[Vgl.][]{ISO10218}
+
+%Definition Primärgenauigkeit
+
+\section{Ziel der Arbeit}
+\label{sec2}
+Übergeordnetes Ziel der Arbeit ist die Identifizierung von Einflüssen auf die Positioniergenauigkeit von nanoskaligen Hexapod-Kinematiken. \\
+
+Im Mittelpunkt der Untersuchung stehen:
+\begin{itemize}
+\item Die Feststellung der notwendigen Primärgenauigkeiten zur Sicherstellung von nanoskaligen Bewegungen der Plattform.
+\item Die Beurteilung kinematischer und strukturmechanischer Einflüsse auf die Positioniergenauigkeit und Ermittlung potentieller Optima.
+\item Die Ableitung grundlegender Empfehlungen für die Konstruktion von nanoskaligen Hexapod-Kinematiken aus den gewonnen Ergebnissen.
+\end{itemize}
+
+
+\section{Abgrenzung der Arbeit}
+\label{sec3}
+
+\section{Gliederung der Arbeit}
+\label{sec4}
+
+
+
+

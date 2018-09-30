@@ -1,0 +1,48 @@
+\tdplotsetmaincoords{60}{60}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2,tdplot_main_coords]
+%---------------------------------------------------------------------------------------------------%
+% define coordinates
+%---------------------------------------------------------------------------------------------------%
+\coordinate (R) at (0,0,0);
+\coordinate (P) at (5,5,25);
+\coordinate (B) at (0,25,10);
+%---------------------------------------------------------------------------------------------------%
+% input macro to replace rotationmatrix
+%---------------------------------------------------------------------------------------------------%
+\input{macros/rotation_xyz.tex}
+%---------------------------------------------------------------------------------------------------%
+% define unit-vector lengths
+%---------------------------------------------------------------------------------------------------%
+\def\ux{10}
+\def\uy{10}
+\def\uz{10}
+%---------------------------------------------------------------------------------------------------%
+\begin{scope}[very thick,->,>=latex]
+\draw (R) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_R$};
+\draw (R) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_R$};
+\draw (R) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_R$};
+\end{scope}
+\node at (R) [anchor=north east]{$\{R\}$};
+
+\tdsetxyzrel
+\tdplotsetrotatedcoordsorigin{(B)}
+\tdplotsetrotatedcoords{10}{-25}{20}
+\begin{scope}[very thick,->,>=latex,tdplot_rotated_coords]
+\draw (B) -- ++(\ux,0,0) node[anchor=north]{$\bvec{x}_B$};
+\draw (B) -- ++(0,\uy,0) node[anchor=south]{$\bvec{y}_B$};
+\draw (B) -- ++(0,0,\uz) node[anchor=east]{$\bvec{z}_B$};
+\end{scope}
+\node at (B) [anchor=north west]{$\{B\}$};
+
+\begin{scope}[very thick,->,>=spaced latex]
+\draw (R) -- (P) node[midway,anchor=south east]{${}^R\bvec{r}_P$};
+\draw (R) -- (B) node[midway,anchor=north west]{${}^R\bvec{r}_{O,B}$};
+\draw (B) -- (P) node[midway,anchor=south west]{${}^B\bvec{r}_P$};
+\end{scope}
+
+\filldraw[thick,draw=black,fill=white] (P) circle (10pt) node[anchor=south east] {$P$};
+
+\end{tikzpicture}
+\end{center}
